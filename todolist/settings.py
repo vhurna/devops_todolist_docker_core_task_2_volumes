@@ -1,3 +1,6 @@
+import pymysql
+pymysql.install_as_MySQLdb()
+
 """
 Django settings for todolist project.
 
@@ -62,10 +65,16 @@ WSGI_APPLICATION = "todolist.wsgi.application"
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'app_db',
+        'USER': 'app_user',
+        'PASSWORD': '1234',
+        'HOST': 'mysql-container', # Змінити на IP-адресу контейнера, якщо необхідно
+        'PORT': '3306',
     }
+}
+
 
     # "default": {
     #     "ENGINE": "django.db.backends.mysql",
@@ -75,7 +84,7 @@ DATABASES = {
     #     "PASSWORD": "my-secret-pw", 
     #     "USER": "root",
     # }
-}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
